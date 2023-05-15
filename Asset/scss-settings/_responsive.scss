@@ -1,0 +1,82 @@
+
+// Responsive Dimention
+$mb-sm: 320px;
+$mb-md: 375px;
+$mb-lg: 425px;
+$tb-sm: 576px;
+$tb-md: 768px;
+$lp-sm: 992px;
+$lp-md: 1280px;
+$lp-lg: 1440px;
+
+@mixin respond($breakpoint) {
+    // ##############################################################   Mobile
+    @if $breakpoint == mb-sm {
+        // 320px
+        @media only screen and (min-width: $mb-sm) {
+            @content;
+        }
+    }
+    @if $breakpoint == mb-md {
+        // 375px
+        @media only screen and (min-width: $mb-md) {
+            @content;
+        }
+    }
+    @if $breakpoint == mb-lg {
+        // 425px
+        @media only screen and (min-width: $mb-lg) {
+            @content;
+        }
+    }
+
+
+
+    
+
+
+
+
+    // ##############################################################   tablate
+    @if $breakpoint == tb-sm {
+        // 576px
+        @media only screen and (min-width: $tb-sm) {
+            @content;
+        }
+    }
+    @if $breakpoint == tb-md {
+        // 768px
+        @media only screen and (min-width: $tb-md) {
+            @content;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    // ##############################################################   Laptop
+    @if $breakpoint == lp-sm {
+        // 992px
+        @media only screen and (min-width: $lp-sm) {
+            @content;
+        }
+    }
+    @if $breakpoint == lp-md {
+        // 1280px
+        @media only screen and (min-width: $lp-md) {
+            @content;
+        }
+    }
+    @if $breakpoint == lp-lg {
+        // 1440px
+        @media only screen and (min-width: $lp-lg) {
+            @content;
+        }
+    }
+}

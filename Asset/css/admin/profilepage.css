@@ -1,0 +1,57 @@
+
+.admin-card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* display: none !important; */
+}
+
+
+.admin-card-body .admin_profilePic{
+    height: 150px;
+    width: 150px;
+    /* border: 5px solid red; */
+    border-radius: 50%;
+    /* background-color: red; */
+}
+
+.admin-card-body .admin_profilePic > img{
+
+    height: 150px;
+    width: 150px;
+}
+
+.admin-card-body .form-login .field {
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+form .field.input input {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form .field.input i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    color: #ccc;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

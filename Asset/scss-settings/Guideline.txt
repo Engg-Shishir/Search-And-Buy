@@ -1,0 +1,5 @@
+
+Just import settings file where you want to use this default settings.Don't create any file inside setting older. It's mandatory recommended
+
+
+Example : @import './Setting/settings';

@@ -1,0 +1,38 @@
+// regular text  -- font-family: 'Roboto', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+// Midd heading -- font-family: 'Open Sans', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
+// Large Heading -- font-family: 'DM Serif Display', serif;
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+  color: $white;
+}
+ul{
+  list-style: none;
+}
+
+p{
+  pointer-events: none !important;
+}
+

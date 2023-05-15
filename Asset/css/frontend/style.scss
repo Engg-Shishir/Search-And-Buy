@@ -1,0 +1,305 @@
+@import "../../scss-settings/settings";
+
+body{
+  background-color: #FCFCFC;
+}
+.container{
+  background-color: #FCFCFC;
+  height: 100%;
+}
+
+.navbar{
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  background-color: #FCFCFC;
+  // border: 1px solid red;
+  .imagebar{
+    color: black;
+    p.hero{
+      font-weight: 700;
+      letter-spacing: -.025em;
+      font-size: 4.25rem;
+      line-height: 2.5rem;
+    }
+    p.slogan{
+      margin-top: 10px !important;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      font-size: 1.8rem;
+    }
+  }
+  .rightbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    .icon{
+      display: inline-block;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      padding: 15px;
+      border-radius: 3px;
+      background-color: #FCFCFC;
+      span{
+        position: absolute;
+        top: -10px;
+        right: -5px;
+        color: black;
+        padding: 5px;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        font-size: 10px;
+        font-weight: bold;
+        display: flex;align-items: center;justify-content: center;
+        animation: ping 2s cubic-bezier(0,0,.2,1) infinite;
+      }
+      &:hover{
+        background-color:#e0dfdf;
+      }
+      i{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 16px;
+      }
+    }
+  
+    .login{
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: black;
+      position: relative;
+      margin-left: 15px;
+    }
+  }
+}
+
+.searchbar{
+  // background-color: black;
+  padding: 5px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  form{
+    width: 100%;
+    @include respond(lp-sm){
+      width: 70%;
+    }
+    .search {
+      width: 100%;
+      display: flex;
+      position: relative;
+      .typingtext{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 15px;
+      }
+      input{
+        width: 100%;
+        height: 50px;
+        padding: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+        outline: none;
+        border: none;
+        background-color: #f9f6f6;
+        padding-left: 20px;
+        border-radius: 2px;
+      }
+      .searchButton{
+        position: absolute;
+        top: 0;
+        right:0;
+        width: 40px;
+        height: 100%;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        pointer-events: none;
+      }
+    }
+  }
+  .searchproductshow{
+    width: 100%;
+    @include respond(lp-sm){
+      width: 70%;
+    }
+    background-color: #FFFFFF;
+    box-shadow: rgba(236, 236, 236, 0.1) 0px 10px 50px;
+    overflow-y: auto;
+    border-radius: 3px;
+    height: auto;
+    // max-height: 50vh;
+    padding: 0px 10px;
+    .product-list{
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+      margin: 5px 0px;
+      .image{
+         padding: 5px;
+      }
+      img{
+        height: 64px;
+        width: 64px;
+      }
+      a{
+        font-size: 14px;
+        color: black;
+        font-weight: 500;
+      }
+
+      &:hover{
+        background-color: #f9f6f6;
+      }
+    }
+    .product-not-found{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          height: 200px;
+        }
+    }
+  }
+}
+
+
+.high-sell{
+  // background-color: #e0dfdf;
+  margin-top: 50px;
+  padding: 10px;
+  .title{
+    float: left;
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #424242;
+    white-space: nowrap;
+    font-weight: bold;
+    margin:15px 70px 20px 70px;
+    position: relative;
+    // &::before{
+    //   position: absolute;
+    //   left: 0;
+    //   top: 110%;
+    //   content: "";
+    //   height: 3px;
+    //   width: 50%;
+    //   background-color: #c8c8c8;
+    // }
+    // &::after{
+    //   position: absolute;
+    //   left: 0;
+    //   top: 130%;
+    //   content: "";
+    //   height: 3px;
+    //   width: 70%;
+    //   background-color: #c8c8c8;
+    // }
+  }
+  .card-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5%;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    .card{
+      flex: 0 0 100%;
+      max-width: 0 0 100%;
+      width: 100%;
+      @include respond(lp-sm){
+        flex: 0 0 17%;
+        max-width: 0 0 17%;
+        width: 17%;
+        column-gap: 1.5%;
+      }
+      background-color: #ffffff44;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+      .image{
+        width: 100%;
+        object-fit: cover;
+        img{
+          width: 100%;
+          height: 185px;
+        }
+      }
+      .text{
+        
+        // cursor: pointer !important;
+        .pname{
+          font-size: 14px;
+          line-height: 18px;
+          color: #000000;
+          padding: 5px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        .pprice{
+          padding: 5px;
+          font-size: 14px;
+          line-height: 18px;
+          color: rgb(182, 6, 6);
+          font-weight: bold;
+        }
+        .pratings{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+          padding: 5px 5px;
+          .ratingbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 5px;
+            font-weight: bold;
+            // cursor: pointer !important;
+              color: #000000;
+            img{
+              height: 20px;
+            }
+            .ratingsno{
+              font-weight: bold;
+              padding: 5px;
+              font-size: 14px;
+              color: #000000;
+            }
+          }
+        }
+      }
+
+      &:hover{
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+      }
+    }
+  }
+}
+
+
+
+
+@keyframes ping{75%,to{transform:scale(2);opacity:0}}

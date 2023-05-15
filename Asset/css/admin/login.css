@@ -1,0 +1,41 @@
+body{
+	background-color: whitesmoke;
+}
+.card{
+	border: none;
+	background: #f5f4f4;
+	color: #f0f0f0;
+	margin-top: 50px;
+}
+.division{
+	float: none;
+	position: relative;
+	margin: 30px auto 20px;
+	text-align: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+.division span{
+	font-weight: bold;
+	font-size: 20px;
+	color: #232323;
+}
+.myform{
+	padding: 0 25px 0 33px;
+}
+.form-control{
+	border: none;
+	border-radius: 3px;
+	background: #eeeeee;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.small{
+	color: #232323;
+	.login-btn-text{
+		font-size: 13px;
+		font-weight: bold;
+	}
+}
+
