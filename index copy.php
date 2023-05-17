@@ -68,10 +68,7 @@ if (mysqli_num_rows($query) > 0) {
                 <div class="pname"><?php echo $row['name']; ?></div>
                 <p class="pratings">
                   <span class="pprice">৳ 480</span>
-                  <span class="ratingbox">
-                    <img src="" alt="">
-                    Ratings
-                    <span class="ratingsno">(70)</span>
+                  <span class="ratingbox"> Ratings <span class="ratingsno">(70)</span>
                   </span>
                 </p>
               </div>
