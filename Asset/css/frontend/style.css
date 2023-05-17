@@ -180,7 +180,7 @@ body {
   color: black;
   outline: none;
   border: none;
-  background-color: #f9f6f6;
+  background-color: #d8d7d7;
   padding-left: 20px;
   border-radius: 2px;
 }
@@ -270,15 +270,17 @@ body {
   flex-wrap: wrap;
   row-gap: 20px;
 }
-.high-sell .card-box .card {
+.high-sell .card-box a.card {
   flex: 0 0 100%;
   max-width: 0 0 100%;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.2666666667);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
 }
 @media only screen and (min-width: 992px) {
-  .high-sell .card-box .card {
+  .high-sell .card-box a.card {
     flex: 0 0 17%;
     max-width: 0 0 17%;
     width: 17%;
@@ -286,16 +288,24 @@ body {
          column-gap: 1.5%;
   }
 }
-.high-sell .card-box .card .image {
+.high-sell .card-box a.card .cards-box {
+  height: 100%;
+  overflow: hidden;
+}
+.high-sell .card-box a.card .cards-box .image {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  position: relative;
+  overflow: hidden;
 }
-.high-sell .card-box .card .image img {
+.high-sell .card-box a.card .cards-box .image img {
+  scale: 1;
   width: 100%;
   height: 185px;
+  transition: all 400ms;
 }
-.high-sell .card-box .card .text .pname {
+.high-sell .card-box a.card .cards-box .text .pname {
   font-size: 14px;
   line-height: 18px;
   color: #000000;
@@ -303,21 +313,21 @@ body {
   font-weight: 600;
   margin-bottom: 10px;
 }
-.high-sell .card-box .card .text .pprice {
+.high-sell .card-box a.card .cards-box .text .pprice {
   padding: 5px;
   font-size: 14px;
   line-height: 18px;
   color: rgb(182, 6, 6);
   font-weight: bold;
 }
-.high-sell .card-box .card .text .pratings {
+.high-sell .card-box a.card .cards-box .text .pratings {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
   padding: 5px 5px;
 }
-.high-sell .card-box .card .text .pratings .ratingbox {
+.high-sell .card-box a.card .cards-box .text .pratings .ratingbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -326,17 +336,31 @@ body {
   font-weight: bold;
   color: #000000;
 }
-.high-sell .card-box .card .text .pratings .ratingbox img {
+.high-sell .card-box a.card .cards-box .text .pratings .ratingbox img {
   height: 20px;
 }
-.high-sell .card-box .card .text .pratings .ratingbox .ratingsno {
+.high-sell .card-box a.card .cards-box .text .pratings .ratingbox .ratingsno {
   font-weight: bold;
   padding: 5px;
   font-size: 14px;
   color: #000000;
 }
-.high-sell .card-box .card:hover {
+.high-sell .card-box a.card:hover .cards-box {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.high-sell .card-box a.card:hover .cards-box .image img {
+  scale: 1.2;
+}
+.high-sell .card-box a.card:hover .icon-box-hober {
+  transform: translateY(0);
+}
+.high-sell .card-box a.card .hello {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #000000;
 }
 
 @keyframes ping {
