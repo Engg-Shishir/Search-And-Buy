@@ -1,0 +1,77 @@
+.bredcrumb {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(232, 232, 232);
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  margin: 10px 0px;
+}
+.bredcrumb span {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bredcrumb span i {
+  margin-left: 5px;
+}
+.bredcrumb span a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.product-details {
+  width: 100%;
+  background-color: honeydew;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+  min-height: 75vh;
+}
+.product-details .image {
+  flex: 0 0 35%;
+  min-width: 0 0 35%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.product-details .image .smallimage {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.product-details .image .smallimage img {
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+}
+.product-details .image .bigimage {
+  height: 85%;
+  width: 100%;
+  padding: 5px;
+}
+.product-details .image .bigimage .picZoomer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-details .details {
+  flex: 0 0 40%;
+  min-width: 0 0 40%;
+  width: 40%;
+}
+.product-details .specifiction {
+  flex: 0 0 25%;
+  min-width: 0 0 25%;
+  width: 25%;
+}/*# sourceMappingURL=pdetails.css.map */

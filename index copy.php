@@ -1,6 +1,18 @@
+
+
+
+
+
+
 <?php
 include_once("../SearchAndBye/Frontend/layout/head.php");
 ?>
+
+
+
+
+
+
 
 <?php
 $conn = mysqli_connect("localhost", "root", "", "searchbuy");
@@ -34,7 +46,6 @@ if (mysqli_num_rows($query) > 0) {
     <form action="post">
       <div class="search">
         <span href="" class="typingtext typewrite" data-period="1000" data-type='[ "Search by brands (Bata,Loto,Easy)", "Search by name (watch,T-shirt)", "Search by price (500,1000,100)"]'>
-          <span class="wrap"></span>
         </span>
         <input type="text" class="searchTerm" id="searchTerm" onblur="myFunction()" />
         <button type="submit" class="searchButton">
@@ -42,47 +53,64 @@ if (mysqli_num_rows($query) > 0) {
         </button>
       </div>
     </form>
-    <div class="searchproductshow" id="searchproductshow">
-    </div>
+    <div class="searchproductshow" id="searchproductshow"></div>
   </div>
   <!-- echo substr_replace($your_text, "...", 20); -->
-  <div class="row high-sell">
-    <h3 class="title">Trending Now</h3>
-    <div class="card-box">
-      <?php
+  <!-- #region -->
+
+  <div class="row title-row">
+    <p class="titlesssss">Tranding Now</p>
+  </div>
+
+  <div class="row trending-product">
+    <div class="product-item-box">
+    <?php
       $conn = mysqli_connect("localhost", "root", "", "searchbuy");
       $query = mysqli_query($conn, "SELECT * FROM product ORDER BY id DESC LIMIT 6");
       if (mysqli_num_rows($query) > 0) {
         while ($row = $query->fetch_assoc()) {
           $lastProductID = $row["id"];
           $price = $row["price"];
-          $data =  json_decode($row["image"]);
+          $data = json_decode($row["image"]);
           $sno = $row["sno"];
+          $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($row['name'])));
       ?>
-          <a href="" class="card">
-            <div class="cards-box">
-              <div class="image">
-                <img class="default-img" src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>" alt="#">
+      <div class="product-item">
+        <div class="product-item-card">
+          <div class="icon-box">
+            <div class="icon-box-inside-relative-box">
+              <div class="cart-icon">
+                <a href="./index.php"><i class="fas fa-solid fa-cart-plus"></i></a>
               </div>
-              <div class="text">
-                <div class="pname"><?php echo $row['name']; ?></div>
-                <p class="pratings">
-                  <span class="pprice">৳ 480</span>
-                  <span class="ratingbox"> Ratings <span class="ratingsno">(70)</span>
-                  </span>
-                </p>
+              <a href="./<?php echo $slug; ?>" class="view-details">
+                <strong>View Details</strong>
+              </a>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="image">
+              <img class="default-img" src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>" alt="#">
+            </div>
+            <div class="text text-center">
+              <p class="pname">
+                <?php echo $row['name']; ?>
+              </p>
+              <div class="ratings-box">
+                <span class="pprice">৳ 480</span>
+                <p class="ratingsno"> Ratings <span>(70)</span></p>
               </div>
             </div>
-            <div class="hello">
-              <a href="" class="link"></a>
-            </div>
-          </a>
+          </div>
+        </div>
+      </div>
       <?php
-        }
       }
-      ?>
+    }
+    ?>
     </div>
   </div>
+
+
 </div>
 
 

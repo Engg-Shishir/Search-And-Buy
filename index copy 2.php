@@ -1,16 +1,20 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "searchbuy");
-$query = mysqli_query($conn, "SELECT * FROM product ORDER BY id DESC LIMIT 6");
-if (mysqli_num_rows($query) > 0) {
-  while ($row = $query->fetch_assoc()) {
-    $lastProductID = $row["id"];
-    $price = $row["price"];
-    $data = json_decode($row["image"]);
-    $sno = $row["sno"];
+include_once("./DB/connection.php");
+?>
+
+<?php
+if (isset($_GET["url"])) {
+  $slug = $_GET["url"];
+  $resultset = mysqli_query($conn, "SELECT * from product where slug = '{$slug}' ");
+  if (mysqli_num_rows($resultset) > 0) {
+    $data = mysqli_fetch_assoc($resultset);
   }
+  $person = json_decode($data['image']);
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +23,18 @@ if (mysqli_num_rows($query) > 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>bb</title>
+  <title>
+    <?php if (isset($title)) {
+      echo $title;
+    } ?>
+  </title>
 
-  <title>bb</title>
   <link rel="stylesheet" href="./Asset/css/frontend/header.css">
-  <script src="https://kit.fontawesome.com/44fc86d735.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./Asset/css/frontend/style.css">
   <link rel="stylesheet" href="./Asset/css/frontend/pdetails.css">
-  <link rel="stylesheet" href="./Asset/Plugin/mainzoom/style.css">
-
+  <script src="https://kit.fontawesome.com/44fc86d735.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./Asset/Plugin/zoom/dist/xzoom.css" media="all" />
+  <link type="text/css" rel="stylesheet" media="all" href="./Asset/Plugin/zoom/fancybox/source/jquery.fancybox.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="./Asset/Plugin/zoom/magnific-popup/css/magnific-popup.css" />
 </head>
 
 <body>
@@ -124,13 +131,7 @@ if (mysqli_num_rows($query) > 0) {
       </div>
     <?php
     } else {
-      $slug = $_GET["url"];
-      $resultset = mysqli_query($conn, "SELECT * from product where slug = '{$slug}' ");
-      if (mysqli_num_rows($resultset) > 0) {
-        $data = mysqli_fetch_assoc($resultset);
-      }
-      $person = json_decode($data['image']);
-      ?>
+    ?>
 
       <div class="row bredcrumb">
         <span><a href="">
@@ -148,16 +149,10 @@ if (mysqli_num_rows($query) > 0) {
           <?php echo $_GET["url"]; ?>
         </p>
       </div>
-       
 
-      <div class="product-details">
-        <div class="image">
-          <div class="bigimage">
-            <div class="picZoomer">
-              <img class="xzoom" id="xzoom-fancy" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $person[0]; ?>" />
-            </div>
-          </div>
-          <div class="smallimage">
+      <div class="row product-details">
+        <div class="left">
+          <div class="left-small-image">
             <?php
             foreach ($person as $key => $value) { ?>
               <img class="psmall-image" width="50" height="50px" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $value; ?>" />
@@ -165,19 +160,30 @@ if (mysqli_num_rows($query) > 0) {
             }
             ?>
           </div>
+          <div class="right-big-image">
+            <div class="xzoom-container pt-2">
+              <img width="400px" height="400px" class="xzoom" id="xzoom-fancy" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $person[0]; ?>" xoriginal="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $person[0]; ?>" />
+            </div>
+          </div>
         </div>
-        <div class="details"></div>
-        <div class="specifiction"></div>
+        <div class="right"></div>
       </div>
- 
-    
+
     <?php
     }
     ?>
+
+
+
   </div>
+  <?php
+  include_once("./Frontend/layout/link-for-body-tag.php");
+  ?>
 
-
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="./Asset/Plugin/mainzoom/script.js"></script>
+  <script type="text/javascript" src="./Asset/Plugin/zoom/fancybox/source/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="./Asset/Plugin/zoom/magnific-popup/js/magnific-popup.js"></script>
+  <script type="text/javascript" src="./Asset/Plugin/zoom/dist/xzoom.min.js"></script>
+  <script src="./Asset/Plugin/zoom/js/settings.js"></script>
 </body>
+
 </html>
