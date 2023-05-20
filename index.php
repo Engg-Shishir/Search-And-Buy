@@ -39,6 +39,23 @@ if (mysqli_num_rows($query) > 0) {
         <p class="slogan">Enjoy your shopping experience.</p>
       </div>
 
+
+      <div class="searchbar">
+        <form action="post">
+          <div class="search">
+            <span href="" class="typingtext typewrite" data-period="1000"
+              data-type='[ "Search by brands (Bata,Loto,Easy)", "Search by name (watch,T-shirt)", "Search by price (500,1000,100)"]'>
+            </span>
+            <input type="text" class="searchTerm" id="searchTerm" onblur="myFunction()" />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
+        <div class="searchproductshow" id="searchproductshow"></div>
+      </div>
+
+
       <div class="rightbar">
         <a class="icon" href="">
           <i class="fas fa-shopping-cart"></i>
@@ -46,24 +63,8 @@ if (mysqli_num_rows($query) > 0) {
         </a>
         <a class="login" href=""><i class="fas fa-regular"></i> Login</a>
       </div>
-    </div>
-    <div class="row searchbar">
-      <form action="post">
-        <div class="search">
-          <span href="" class="typingtext typewrite" data-period="1000" data-type='[ "Search by brands (Bata,Loto,Easy)", "Search by name (watch,T-shirt)", "Search by price (500,1000,100)"]'>
-          </span>
-          <input type="text" class="searchTerm" id="searchTerm" onblur="myFunction()" />
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
-      <div class="searchproductshow" id="searchproductshow"></div>
-    </div>
-    <!-- echo substr_replace($your_text, "...", 20); -->
-    <!-- #region -->
 
-
+    </div>
 
 
 
@@ -71,7 +72,7 @@ if (mysqli_num_rows($query) > 0) {
 
     <?php
     if (!isset($_GET["url"])) {
-    ?>
+      ?>
       <div class="row title-row">
         <p class="titlesssss">Tranding Now</p>
       </div>
@@ -87,7 +88,7 @@ if (mysqli_num_rows($query) > 0) {
               $data = json_decode($row["image"]);
               $sno = $row["sno"];
               $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($row['name'])));
-          ?>
+              ?>
               <div class="product-item">
                 <div class="product-item-card">
                   <div class="icon-box">
@@ -102,7 +103,8 @@ if (mysqli_num_rows($query) > 0) {
                   </div>
                   <div class="main-box">
                     <div class="image">
-                      <img class="default-img" src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>" alt="#">
+                      <img class="default-img" src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>"
+                        alt="#">
                     </div>
                     <div class="text text-center">
                       <p class="pname">
@@ -116,13 +118,13 @@ if (mysqli_num_rows($query) > 0) {
                   </div>
                 </div>
               </div>
-          <?php
+              <?php
             }
           }
           ?>
         </div>
       </div>
-    <?php
+      <?php
     } else {
       $slug = $_GET["url"];
       $resultset = mysqli_query($conn, "SELECT * from product where slug = '{$slug}' ");
@@ -130,7 +132,7 @@ if (mysqli_num_rows($query) > 0) {
         $data = mysqli_fetch_assoc($resultset);
       }
       $person = json_decode($data['image']);
-    ?>
+      ?>
 
       <div class="row bredcrumb">
         <span>
@@ -139,8 +141,10 @@ if (mysqli_num_rows($query) > 0) {
           </a>
           <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></i>
         </span>
-        <span>LG <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></span>
-        <span>Electic <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></i></span>
+        <span>LG <i class="fas fa-long-arrow-alt-right"
+            style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></span>
+        <span>Electic <i class="fas fa-long-arrow-alt-right"
+            style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></i></span>
         <span><a href="">
             <?php echo $data["name"]; ?>
           </a></span>
@@ -151,20 +155,23 @@ if (mysqli_num_rows($query) > 0) {
         <div class="image">
           <div class="bigimage">
             <div class="picZoomer">
-              <img class="xzoom" id="xzoom-fancy" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $person[0]; ?>" />
+              <img class="xzoom" id="xzoom-fancy"
+                src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $person[0]; ?>" />
             </div>
           </div>
           <div class="smallimage">
             <?php
             foreach ($person as $key => $value) {
-            ?>
+              ?>
               <img class="psmall-image <?php if ($key == 0)
-                                          echo "active" ?>" width="50" height="50px" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $value; ?>" />
-            <?php
+                echo "active" ?>" width="50" height="50px"
+                  src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $value; ?>" />
+              <?php
             }
             ?>
           </div>
         </div>
+        
         <div class="details">
           <p class="name">
             <?php echo $data["name"]; ?>
@@ -197,16 +204,16 @@ if (mysqli_num_rows($query) > 0) {
             </div>
 
             <div class="btn-group">
-              <a href="">Add to Cart</a>
-              <a href="">Order Procedure</a>
+              <a href="" class="add-to-cart">Add to Cart</a>
               <a href="#specification-cnt">Specification</a>
+              <a href="#specification-cnt">Review</a>
               <a href="">Q&A</a>
-              <a href="">Review</a>
             </div>
           </div>
-
-          .
+       
         </div>
+        
+
         <div class="specifiction">
           <div class="row title-row">
             <p class="titlesssss"> Similar Product </p>
@@ -216,51 +223,106 @@ if (mysqli_num_rows($query) > 0) {
             $category = $data["category"];
             $query = mysqli_query($conn, "SELECT * FROM product where category='{$category}' ORDER BY id DESC LIMIT 5");
             if (mysqli_num_rows($query) > 0) {
-              while ($row = $query->fetch_assoc()) {
-                $lastProductID = $row["id"];
-                $price = $row["price"];
-                $data = json_decode($row["image"]);
-                $sno = $row["sno"];
-                $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($row['name'])));
-            ?>
+              while ($catrowrow = $query->fetch_assoc()) {
+                $lastProductID = $catrowrow["id"];
+                $catprice = $catrowrow["price"];
+                $catdata = json_decode($catrowrow["image"]);
+                $catsno = $catrowrow["sno"];
+                $catslug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($catrowrow['name'])));
+                ?>
 
                 <div class="similar-product-card">
                   <div class="top">
                     <div class="similar-product-card-image">
-                      <img src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>" alt="">
+                      <img src="./Asset/image/product/<?php echo $catsno; ?>/<?php echo $catdata[0]; ?>" alt="">
                     </div>
                     <div class="similar-product-card-name">
                       <p class="name">
-                        <?php echo $row["name"]; ?>
+                        <?php echo $catrowrow["name"]; ?>
                       </p>
                       <div class="others">
                         <p class="name">Tk
-                          <?php echo $row["price"]; ?>
+                          <?php echo $catprice; ?>
                         </p>
-                        <a href="/view/<?php echo $slug; ?>"><i class="fas fa-eye"></i></a>
-                        <a href="/cart/<?php echo $slug; ?>">Add to cart</a>
+                        <a href="/view/<?php echo $catslug; ?>"><i class="fas fa-eye"></i></a>
+                        <a href="/cart/<?php echo $catslug; ?>">Add to cart</a>
                       </div>
                     </div>
                   </div>
                   <div class="bottom"></div>
                 </div>
-            <?php
+                <?php
               }
             }
             ?>
-          </div>          
+          </div>
           <div class="row seemore">
-
-</div>
+            <a href="/SearchAndBye?cat=<?php  echo $data["category"]; ?>" class="seemore">See More</a>
+          </div>
         </div>
-
       </div>
-       
-      <div class="row title-row" id="specification-cnt">
-        <p class="titlesssss">Specification </p>
+      <div class="row mt-50"  id="specification-cnt"></div>
+      <div class="row specification-cnt">
+        <div class="speci">
+          <div class="row title-row">
+            <p class="titlesssss">Specification </p>
+          </div>
+          <ul>
+            <li> <span>Model</span> <span>Insta360 GO 2</span> </li>
+            <li> <span>Model</span> <span>Insta360 GO 2</span> </li>
+            <li> <span>Model</span> <span>Insta360 GO 2</span> </li>
+          </ul>
+          
+          <div class="row title-row">
+            <p class="titlesssss">Video</p>
+          </div>
+          <div class="row video-row">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/i04U0C-v_to" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="review">
+          <div class="row title-row right">
+            <p class="titlesssss">Customer Review</p>
+          </div>
+          <div class="row">
+            <div class="review-card">
+              <p>Hi, As a business owner, you understand how important it is to have a robust online presence. However, with so many different strategies and tactics to choose from, it can be overwhelming to know where to start. That's why we're excited to introduce you to AISEO, our AI writing software specifically designed to help you improve your SEO efforts. With AISEO, you'll be able to: - Generate high-quality and SEO-friendly content in minutes - Optimize your website and blog posts for search engines - Identify and fix common SEO mistakes - Track and analyze your SEO progress This AI writing software can help you to save time and resources while also boosting your online visibility and search engine rankings. To try AISEO for free and see how it can help your business, click on the link:bit.ly/3jYzDNO Don't miss out on this opportunity to improve your SEO efforts and reach more customers online. Give AISEO a try today and see the difference it can make for your business. Please let me know how you get on and contact me if you need any further support. Thanks and good luck Best</p>
+              <p class="user"><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span> <span class="name">Shishir Bhuiyan</span></p>
+            </div>
+          
+            <div class="review-card">
+              <p>Hi, As a business owner, you understand how important it is to have a robust online presence. However, with so many different strategies and tactics to choose from, it can be overwhelming to know where to start. That's why we're excited to introduce you to AISEO, our AI writing software specifically designed to help you improve your SEO efforts. With AISEO, you'll be able to: - Generate high-quality and SEO-friendly content in minutes - Optimize your website and blog posts for search engines - Identify and fix common SEO mistakes - Track and analyze your SEO progress This AI writing software can help you to save time and resources while also boosting your online visibility and search engine rankings. To try AISEO for free and see how it can help your business, click on the link:bit.ly/3jYzDNO Don't miss out on this opportunity to improve your SEO efforts and reach more customers online. Give AISEO a try today and see the difference it can make for your business. Please let me know how you get on and contact me if you need any further support. Thanks and good luck Best</p>
+              <p class="user"><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;"></span> <span class="name">Shishir Bhuiyan</span></p>
+            </div>
+  
+          </div>
+            <div class="row title-row right">
+              <p class="titlesssss">Your Review</p>
+            </div>
+          <div class="row your-review">
+            <ul class="review-star">
+              <li><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;" aria-hidden="true"></span></li>
+              <li><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;" aria-hidden="true"></span></li>
+              <li><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;" aria-hidden="true"></span></li>
+              <li><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;" aria-hidden="true"></span></li>
+              <li><span class="fas fa-star stars" style="font-family:Font Awesome 5 Free, Bangla596, sans-serif;" aria-hidden="true"></span></li>
+            </ul>
+            <form action="">
+              <div class="group">
+              <!-- <level>Name</level> -->
+              <input type="text" name="revewer-name" class="revewer-name" placeholder="Your Name" />
+              </div>
+              <div class="group">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="review"></textarea>
+              </div>
+              <div class="group group-submit">
+                <a href="" class="submit">Submit</a>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="row specification-cnt"></div>
-    <?php
+      <?php
     }
     ?>
   </div>
