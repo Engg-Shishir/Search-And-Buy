@@ -130,25 +130,22 @@ if (mysqli_num_rows($query) > 0) {
         $data = mysqli_fetch_assoc($resultset);
       }
       $person = json_decode($data['image']);
-      ?>
+    ?>
 
       <div class="row bredcrumb">
-        <span><a href="">
+        <span>
+          <a href="">
             <?php echo $data["category"]; ?>
-          </a> <i class="fas fa-angle-right"></i></span>
-        <span>LG <i class="fas fa-angle-right"></i></span>
-        <span>Electic <i class="fas fa-angle-right"></i></span>
+          </a>
+          <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></i>
+        </span>
+        <span>LG <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></span>
+        <span>Electic <i class="fas fa-long-arrow-alt-right" style="font-family:Font Awesome 5 Free, Bangla806, sans-serif;"></i></i></span>
         <span><a href="">
             <?php echo $data["name"]; ?>
           </a></span>
       </div>
 
-      <div class="row title-row">
-        <p class="titlesssss">
-          <?php echo $_GET["url"]; ?>
-        </p>
-      </div>
-       
 
       <div class="product-details">
         <div class="image">
@@ -159,25 +156,120 @@ if (mysqli_num_rows($query) > 0) {
           </div>
           <div class="smallimage">
             <?php
-            foreach ($person as $key => $value) { ?>
-              <img class="psmall-image" width="50" height="50px" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $value; ?>" />
+            foreach ($person as $key => $value) {
+            ?>
+              <img class="psmall-image <?php if ($key == 0)
+                                          echo "active" ?>" width="50" height="50px" src="./Asset/image/product/<?php echo $data["sno"]; ?>/<?php echo $value; ?>" />
             <?php
             }
             ?>
           </div>
         </div>
-        <div class="details"></div>
-        <div class="specifiction"></div>
+        <div class="details">
+          <p class="name">
+            <?php echo $data["name"]; ?>
+          </p>
+          <p class="sno">SNO :
+            <?php if (isset($data["sno"]))
+              echo $data["sno"]; ?>
+          </p>
+          <div class="price">
+            <div class="rprice">Regular Price Tk &nbsp;
+              <?php if (isset($data["price"]))
+                echo $data["price"]; ?>
+            </div>
+            <div class="sprice">Special Price Tk &nbsp;
+              <?php if (isset($data["price"]))
+                echo $data["price"]; ?>
+            </div>
+          </div>
+
+          <div class="quickoverview">
+            <p class="quickoverviewtitle">Quick Overview</p>
+            <div class="quickoverviewlist">
+              <ul>
+                <li>Heart Rate - Yes</li>
+                <li>Watch Size - 42mm</li>
+                <li>Waterproof - Yes</li>
+                <li>Cellular Network - No</li>
+                <li>Screen/Display Size. - 1.75 Inch</li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <a href="">Add to Cart</a>
+              <a href="">Order Procedure</a>
+              <a href="#specification-cnt">Specification</a>
+              <a href="">Q&A</a>
+              <a href="">Review</a>
+            </div>
+          </div>
+
+          .
+        </div>
+        <div class="specifiction">
+          <div class="row title-row">
+            <p class="titlesssss"> Similar Product </p>
+          </div>
+          <div class="related-product-box">
+            <?php
+            $category = $data["category"];
+            $query = mysqli_query($conn, "SELECT * FROM product where category='{$category}' ORDER BY id DESC LIMIT 5");
+            if (mysqli_num_rows($query) > 0) {
+              while ($row = $query->fetch_assoc()) {
+                $lastProductID = $row["id"];
+                $price = $row["price"];
+                $data = json_decode($row["image"]);
+                $sno = $row["sno"];
+                $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($row['name'])));
+            ?>
+
+                <div class="similar-product-card">
+                  <div class="top">
+                    <div class="similar-product-card-image">
+                      <img src="./Asset/image/product/<?php echo $sno; ?>/<?php echo $data[0]; ?>" alt="">
+                    </div>
+                    <div class="similar-product-card-name">
+                      <p class="name">
+                        <?php echo $row["name"]; ?>
+                      </p>
+                      <div class="others">
+                        <p class="name">Tk
+                          <?php echo $row["price"]; ?>
+                        </p>
+                        <a href="/view/<?php echo $slug; ?>"><i class="fas fa-eye"></i></a>
+                        <a href="/cart/<?php echo $slug; ?>">Add to cart</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom"></div>
+                </div>
+            <?php
+              }
+            }
+            ?>
+          </div>          
+          <div class="row seemore">
+
+</div>
+        </div>
+
       </div>
- 
-    
+       
+      <div class="row title-row" id="specification-cnt">
+        <p class="titlesssss">Specification </p>
+      </div>
+      <div class="row specification-cnt"></div>
     <?php
     }
     ?>
   </div>
 
-
+  <?php
+  include_once("./Frontend/layout/link-for-body-tag.php");
+  ?>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="./Asset/Plugin/mainzoom/script.js"></script>
 </body>
+
 </html>

@@ -45,7 +45,7 @@
 	$.fn.picZoomer.defaults = {
 		picWidth:320,
 		picHeight:320,
-		scale:2.5,
+		scale:3.5,
 		zoomerPosition: {top:'0', left: '350px'}
 	};
 })(jQuery);
@@ -53,6 +53,8 @@
 $(function(){
 	$('.picZoomer').picZoomer();
 	$('.psmall-image').on('click', function(event){
+		$('.psmall-image').removeClass("active");
+		$(this).addClass("active");
 		$('.xzoom').attr('src',$(this).attr('src'));
 	});
 });
