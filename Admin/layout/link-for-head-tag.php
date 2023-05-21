@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../Asset/Plugin/AdminLte/adminlte.min.css">
+<script src="https://kit.fontawesome.com/44fc86d735.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../Asset/Plugin/Tempusdominus/tempusdominus-bootstrap-4.min.css">
 <link rel="stylesheet" href="../Asset/Plugin/Summernote/summernote-bs4.css">
 <link rel="stylesheet" href="../Asset/Plugin/Fontawesome/css/all.min.css">

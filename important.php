@@ -36,4 +36,12 @@ if(isset($_GET["url"])){
   echo $_GET["url"];
 }
 
+
+// Rename
+
+$dirname = "../../../Asset/image/admin/category/";
+$oldfile = $dirname."sdfsd.png";
+$path = $dirname ."1.png";
+rename($oldfile,$path);
+
 ?>

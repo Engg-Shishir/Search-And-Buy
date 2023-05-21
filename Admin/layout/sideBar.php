@@ -38,7 +38,7 @@ if (strpos($_SERVER['REQUEST_URI'], "dashboard.php")) {
 
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-primary elevation-4 shadow" style="min-height:100vh;">
+<aside class="main-sidebar navbar-light" style="min-height:100vh;">
   <!-- Brand Logo -->
   <a href="./profile.php" class="brand-link d-flex flex-column align-items-center justify-content-center" style="border:none !important;">
     <img class="shadow" id="sidebar_profile_logo" src="<?php echo $sidebarImage; ?>" style="height:100px;width:100px;border-radius:50%;text-decoration:none;">
@@ -54,18 +54,18 @@ if (strpos($_SERVER['REQUEST_URI'], "dashboard.php")) {
         <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
         <li class="nav-item dashboard-li">
-          <a href="./dashboard.php" class="nav-link">
-            <i class="nav-icon fas fa-user-tie"></i>
+          <a href="./home.php" class="nav-link">
+          <i class="nav-icon fas fa-th" aria-hidden="true" style="font-family:Font Awesome 5 Free, Bangla650, sans-serif;"></i>
             <p>
               Dashboard
             </p>
           </a>
         </li>
-        <li class="nav-item common-li">
-          <a href="./order.php" class="nav-link">
-            <i class="nav-icon fas fa-user-tie"></i>
+        <li class="nav-item dashboard-li">
+          <a href="./profile.php" class="nav-link">
+          <i class="nav-icon fas fa-user" aria-hidden="true" style="font-family:Font Awesome 5 Free, Bangla650, sans-serif;"></i>
             <p>
-              Order
+              Profile
             </p>
           </a>
         </li>
@@ -99,6 +99,18 @@ if (strpos($_SERVER['REQUEST_URI'], "dashboard.php")) {
               </a>
             </li>
             <li class="nav-item  brand_category-li">
+              <a href="brand.php" class="nav-link">
+                <i class=" fas fa-solid fa-angle-right"></i>
+                <p>Brand</p>
+              </a>
+            </li>
+            <li class="nav-item  brand_category-li">
+              <a href="shop.php" class="nav-link">
+                <i class=" fas fa-solid fa-angle-right"></i>
+                <p>Shop</p>
+              </a>
+            </li>
+            <li class="nav-item  brand_category-li">
               <a href="cupon.php" class="nav-link">
                 <i class=" fas fa-solid fa-angle-right"></i>
                 <p>Cupon</p>
@@ -119,4 +131,26 @@ if (strpos($_SERVER['REQUEST_URI'], "dashboard.php")) {
     <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->
+</aside>
+
+<aside class="control-sidebar control-sidebar-dark" style="top: 56.8px; height: 665.2px; display: block;">
+
+  <div class="p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-overflow os-host-overflow-y" style="height: 665.2px;">
+    <div class="os-resize-observer-host observed">
+         <div class="os-resize-observer" style="left: 0px; right: auto;"></div>
+    </div>
+
+    <div class="os-resize-observer"></div>
+  
+    <div class="os-content-glue" style="margin: -16px;"></div>
+    <div class="os-padding">
+      <div class="os-viewport os-viewport-native-scrollbars-invisible">
+          <div class="os-content" style="padding: 16px; height: 100%; width: 100%;">
+            <h5>Customize AdminLTE</h5><hr class="mb-2">
+            <div class="mb-4">
+              <input type="checkbox" value="1" class="mr-1"><span>Dark Mode</span>
+            </div>
+          </div>
+    </div></div></div>
+
 </aside>
