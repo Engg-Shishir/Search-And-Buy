@@ -6,9 +6,11 @@
 $text = $_POST['texts'];
 
 
+$ok = "SELECT * FROM product WHERE (name LIKE '%$text%' OR price LIKE '%$text%' OR category LIKE '%$text%' OR scharge LIKE '%$text%')";
 
-$sql = "SELECT * FROM search WHERE name LIKE '%$text%'";
-$result = mysqli_query($conn,$sql);
+
+// $sql = "SELECT * FROM product WHERE name LIKE '%$text%' OR price LIKE '%$text%'";
+$result = mysqli_query($conn,$ok);
 $rows = mysqli_num_rows($result);
 
 $output="";
@@ -23,9 +25,11 @@ if($rows < 1){
 
 
 while($row=mysqli_fetch_assoc($result)){
+  $pdata = json_decode($row['image']);
+  $url = "./Asset/image/product/".$row['sno']."/".$pdata[0];
   echo '<div class="product-list">
       <div class="image">
-        <img src="'.$row['image'].'" alt="">
+        <img src="'.$url.'" alt="">
       </div>
       <a href="">'.$row['name'].'</a>
     </div>';

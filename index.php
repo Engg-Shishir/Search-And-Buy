@@ -78,7 +78,7 @@ if (mysqli_num_rows($query) > 0) {
       <div class="row trending-product">
         <div class="product-item-box">
           <?php
-          $conn = mysqli_connect("localhost", "root", "", "searchbuy");
+          // $conn = mysqli_connect("localhost", "root", "", "searchbuy");
           $query = mysqli_query($conn, "SELECT * FROM product ORDER BY id DESC LIMIT 6");
           if (mysqli_num_rows($query) > 0) {
             while ($row = $query->fetch_assoc()) {
@@ -192,7 +192,7 @@ if (mysqli_num_rows($query) > 0) {
 
           <div class="quickoverview">
             <p class="quickoverviewtitle">Quick Overview</p>
-            <div class="quickoverviewlist">
+            <!-- <div class="quickoverviewlist">
               <ul>
                 <li>Heart Rate - Yes</li>
                 <li>Watch Size - 42mm</li>
@@ -200,7 +200,9 @@ if (mysqli_num_rows($query) > 0) {
                 <li>Cellular Network - No</li>
                 <li>Screen/Display Size. - 1.75 Inch</li>
               </ul>
-            </div>
+            </div> -->
+            <p><?php if (isset($data["details"]))
+                echo $data["details"]; ?></p>
 
             <div class="btn-group">
               <a href="" class="add-to-cart">Add to Cart</a>

@@ -12,6 +12,7 @@ $pquantity = $_POST['productQuantity'];
 $pdiscount = $_POST['productDiscount'];
 $pdetails = $_POST['productDetails'];
 $sirial = $_POST['sno'];
+$slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($pname)));
 
 if ($action == "edit") {
     $sno = $_POST['sno'];
@@ -36,7 +37,7 @@ if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetail
 
         if (count($productsRecive) > 0) {
 
-            $sql = "INSERT INTO product(sno,name, price, category, details, quantity, discount, scharge,image) VALUES ('" . $sno . "','" . $pname . "','" . $pprice . "','" . $pcategory . "','" . $pdetails . "','" . $pquantity . "','" . $pdiscount . "','" . $pscharge . "','" . $image . "')";
+            $sql = "INSERT INTO product(sno,name,slug, price, category, details, quantity, discount, scharge,image) VALUES ('" . $sno . "','" . $pname . "','" . $slug . "','" . $pprice . "','" . $pcategory . "','" . $pdetails . "','" . $pquantity . "','" . $pdiscount . "','" . $pscharge . "','" . $image . "')";
 
 
             $run = mysqli_query($conn, $sql);

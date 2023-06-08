@@ -8,7 +8,7 @@ $password = "";
 $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$conn = mysqli_connect("localhost", "root", "", "searchbuy");
+$conn = mysqli_connect("shishirbhuiyan.tech", "shishirb", "L4f+Z208oRcT+l", "shishirb_ecom");
 
 $img_ext = "";
 $tmp_name = "";

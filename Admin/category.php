@@ -65,10 +65,11 @@
                       </div>
                     </div>
                     <div class="input-group mb-1">
-                      <input type="text" name="catefild" class="form-control" placeholder="Enter name" id="catefild"  />
+                      <input type="text" name="catefild" class="form-control" placeholder="Enter name" id="catefild" />
                     </div>
                     <div class="input-group mb-1">
-                      <textarea name="description" class="form-control" rows="3" placeholder="Enter description" id="description"  spellcheck="false" ></textarea>
+                      <textarea name="description" class="form-control" rows="3" placeholder="Enter description"
+                        id="description" spellcheck="false"></textarea>
                     </div>
                     <div style="display:flex;align-items:center;justify-content:space-between; flex-direction:column;">
                       <div class="input-group mb-3 ml-auto">
@@ -108,7 +109,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $conn = mysqli_connect("localhost", "root", "", "searchbuy");
+                      $conn = mysqli_connect("shishirbhuiyan.tech", "shishirb", "L4f+Z208oRcT+l", "shishirb_ecom");
                       $sql = "SELECT * FROM category";
                       $resultset = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_array($resultset)) {
@@ -197,16 +198,16 @@
         $.ajax({
           type: "POST",
           url: "./action/category/fetch.php",
-          data:{
+          data: {
             id: id,
           },
           dataType: "json",
           beforeSend: function () {
-            
+
           },
           success: function (response) {
             // $('#catlebel').text(response.category_image);
-            $("#catpreviewimage").attr("src", "../Asset/image/admin/category/"+response.category_image);
+            $("#catpreviewimage").attr("src", "../Asset/image/admin/category/" + response.category_image);
             $('#updatecategoryhiddenid').val(response.category_id);
             $('#catefild').val(response.category_name);
             $('#description').val(response.description);
